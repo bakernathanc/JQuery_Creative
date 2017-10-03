@@ -17,11 +17,12 @@ $(document).ready(function() {
     console.log("I'm in the thingy!!")
     console.log(value);
     e.preventDefault();
+    value = value.replace(" ", "%20")
 
     var myurl = "https://www.googleapis.com/books/v1/volumes?q="
     myurl += value
     myurl += "&filter=ebooks&orderBy=newest&printType=all&projection=full"
-
+    console.log(myurl)
     $.ajax({
       url : myurl,
       dataType : "json",
@@ -35,11 +36,13 @@ $(document).ready(function() {
           var author = parsed_json['items'][index]['volumeInfo']['authors']
           var snippet = parsed_json['items'][index]['searchInfo']['textSnippet']
           var image_link = parsed_json['items'][index]['volumeInfo']['imageLinks']['smallThumbnail']
+          image_link = "\""+image_link + "\""
+          
           everything+="<li> <a href="+ link +">"+title+"</a>";
           everything +="<ul>"
           everything += "<li>Author(s): " + author + "\n";
           everything += "<li>Quick snippet: ''" + snippet + "'";
-          //everything += "<img src=image_link>"
+          everything += "<li><img href=image_link>"
           everything += "</ul>";
         });//function
         everything +="</ul>";
