@@ -34,10 +34,12 @@ $(document).ready(function() {
           var link = parsed_json['items'][index]['volumeInfo']['infoLink'];
           var author = parsed_json['items'][index]['volumeInfo']['authors']
           var snippet = parsed_json['items'][index]['searchInfo']['textSnippet']
+          var image_link = parsed_json['items'][index]['volumeInfo']['imageLinks']['smallThumbnail']
           everything+="<li> <a href="+ link +">"+title+"</a>";
           everything +="<ul>"
           everything += "<li>Author(s): " + author + "\n";
           everything += "<li>Quick snippet: ''" + snippet + "'";
+          //everything += "<img src=image_link>"
           everything += "</ul>";
         });//function
         everything +="</ul>";
