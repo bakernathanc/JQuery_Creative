@@ -40,7 +40,7 @@ $(document).ready(function() {
           var image_link = parsed_json['items'][index]['volumeInfo']['imageLinks']['smallThumbnail']
           image_link = "\""+image_link + "\""
           
-          everything+="<li> <a href="+ link +">"+title+"</a>";
+          everything+="<li class = 'inner'> <a href="+ link +">"+title+"</a>";
           everything +="<ul>"
           everything += "<li>Author(s): " + author + "\n";
           everything += "<li>Quick snippet: ''" + snippet + "'";
@@ -57,8 +57,9 @@ $(document).ready(function() {
 <body>
 <div id = overlay>
     <div id = center>
+    <h1>Google Book Search</h1>
       <div id = searchDiv>
-        <form id = searchDiv >
+        <form id = searchForm >
           <p>Enter a book or key phrase: <input type="text" id="bookInput" value="Harry Potter">
           <input id="bookButton" type="submit" value="Submit"></p>
         </form>
