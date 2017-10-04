@@ -1,6 +1,8 @@
 <html>
 <head>
   <Title>Google Book Search</title>
+  <link rel="stylesheet" type="text/css" href="jquery_creative.css">
+
 
 </head>
 <script
@@ -53,10 +55,17 @@ $(document).ready(function() {
 });//doc ready
 </script>
 <body>
-<form>
-  <p>Enter a book or key phrase: <input type="text" id="bookInput" value="">
-  <input id="bookButton" type="submit" value="Submit"></p>
-</form>
-<div id="bookResults">No Book results yet</div>
+<div id = overlay>
+    <div id = center>
+      <div id = searchDiv>
+        <form id = searchDiv >
+          <p>Enter a book or key phrase: <input type="text" id="bookInput" value="Harry Potter">
+          <input id="bookButton" type="submit" value="Submit"></p>
+        </form>
+      </div>
+
+    <div id="bookResults"></div>
+  </div>
+</div>
 </body>
 </html>
