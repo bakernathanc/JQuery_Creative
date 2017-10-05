@@ -1,0 +1,49 @@
+#overlay{
+	background-image: url("http://books.google.com/books/content?id=ilc0DwAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	*/
+}
+
+#center{
+	background-color: lightgrey;
+	padding: 9%;
+	border-style: rounded;
+	}
+
+#searchDiv{
+	padding: .5%;
+	color:white;
+	text-align: center;
+	background-color: grey;
+	box-shadow:3px 3px 4px 1px #5e5858;
+	
+}
+
+#form{
+	text-align: center;
+	box-shadow: none;
+}
+
+#inner{
+	background-color: black;
+}
+h1{
+	text-align: center;
+}
+
+li.inner{
+	padding: 3;
+	box-shadow:3px 3px 4px 1px #5e5858;
+	background-color:#969393;
+}
+li{
+	margin: 1em 0;
+	text-align: left;
+	list-style: none;
+}
+
+body{
+	background-color: black;
+}
+	
