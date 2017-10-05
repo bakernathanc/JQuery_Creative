@@ -14,7 +14,6 @@ $(document).ready(function() {
 
   $("#bookButton").click(function(e){
     var value = $("#bookInput").val();
-    console.log("I'm in the thingy!!")
     console.log(value);
     e.preventDefault();
     value = value.replace(" ", "%20")
@@ -28,23 +27,56 @@ $(document).ready(function() {
       dataType : "json",
       success : function(parsed_json) {
         console.log(parsed_json)
-        console.log("I'm inside!")
-        everything="<ul>";
-        $.each(parsed_json['items'],function(index){
-          var title = parsed_json['items'][index]['volumeInfo']['title'];
-          var link = parsed_json['items'][index]['volumeInfo']['infoLink'];
-          var author = parsed_json['items'][index]['volumeInfo']['authors']
-          var snippet = parsed_json['items'][index]['searchInfo']['textSnippet']
-          var image_link = parsed_json['items'][index]['volumeInfo']['imageLinks']['smallThumbnail']
-          image_link = "\""+image_link + "\""
-          
-          everything+="<li> <a href="+ link +">"+title+"</a>";
-          everything +="<ul>"
-          everything += "<li>Author(s): " + author + "\n";
-          everything += "<li>Quick snippet: ''" + snippet + "'";
-          everything += "<li><img href=image_link>"
+        var everything="<ul>";
+        var title_list =[]
+        var bookLink_list=[]
+        var author_list=[]
+        var snippet=[]
+        var image_link_list=[]
+        parsed_json.items.forEach(function(val, ind, arr) {
+          if(val &&val.volumeInfo && val.volumeInfo.title ){
+            title_list.push(val.volumeInfo.title);
+            console.log(title_list[0])
+          }
+          else{
+            title_list.push("No Title Given")
+          }
+          if(val && val.volumeInfo && val.volumeInfo.infoLink){
+            bookLink_list.push(val.volumeInfo.infoLink);
+          }
+          else{
+
+          }
+          if(val && val.volumeInfo && val.volumeInfo.authors){
+            author_list.push(val.volumeInfo.authors);
+          }
+          else{
+            author_list.push("No author listed")
+          }
+          if(val && val.searchInfo && val.searchInfo.textSnippet){
+            snippet.push(val.searchInfo.textSnippet);
+          }
+          else{
+            snippet.push("No snippet given")
+          }
+          if(val && val.volumeInfo && val.volumeInfo.imageLinks&&val.volumeInfo.imageLinks.smallThumbnail){
+            image_link_list.push(val.volumeInfo.imageLinks.smallThumbnail);
+          }
+          else{
+
+          }
+        })
+
+        for(i=0;i<title_list.length;i++){
+          console.log(i)
+          everything+="<li> <a href="+ bookLink_list[i] +">"+title_list[i]+"</a>";
+          everything += "<li>Author(s): " + author_list[i];
+          everything += "<li>Quick snippet: " + snippet[i];
+          everything += "<li><img src="+image_link_list[i]+">";
           everything += "</ul>";
-        });//function
+
+        }
+        console.log(everything)
         everything +="</ul>";
         $("#bookResults").html(everything);
       }//json success
