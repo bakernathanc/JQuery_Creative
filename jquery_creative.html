@@ -16,19 +16,16 @@ $(document).ready(function() {
 
   $("#bookButton").click(function(e){
     var value = $("#bookInput").val();
-    console.log(value);
     e.preventDefault();
     value = value.replace(" ", "%20")
 
     var myurl = "https://www.googleapis.com/books/v1/volumes?q="
     myurl += value
     myurl += "&filter=ebooks&orderBy=newest&printType=all&projection=full"
-    console.log(myurl)
     $.ajax({
       url : myurl,
       dataType : "json",
       success : function(parsed_json) {
-        console.log(parsed_json)
         var everything="<ul>";
         var title_list =[]
         var bookLink_list=[]
@@ -38,7 +35,6 @@ $(document).ready(function() {
         parsed_json.items.forEach(function(val, ind, arr) {
           if(val &&val.volumeInfo && val.volumeInfo.title ){
             title_list.push(val.volumeInfo.title);
-            console.log(title_list[0])
           }
           else{
             title_list.push("No Title Given")
@@ -65,12 +61,11 @@ $(document).ready(function() {
             image_link_list.push(val.volumeInfo.imageLinks.smallThumbnail);
           }
           else{
-
+            image_link_list.push("http://ec2-13-59-168-225.us-east-2.compute.amazonaws.com/JQuery_Creative/No_image_3x4.png")
           }
         })
 
         for(i=0;i<title_list.length;i++){
-          console.log(i)
           everything+="<li> <a href="+ bookLink_list[i] +">"+title_list[i]+"</a>";
           everything += "<ul>"
           everything += "<li>Author(s): " + author_list[i] ;
@@ -79,7 +74,6 @@ $(document).ready(function() {
           everything += "</ul>";
 
         }
-        console.log(everything)
         everything +="</ul>";
         $("#bookResults").html(everything);
       }//json success
