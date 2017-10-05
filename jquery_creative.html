@@ -66,7 +66,7 @@ $(document).ready(function() {
         })
 
         for(i=0;i<title_list.length;i++){
-          everything+="<li> <a href="+ bookLink_list[i] +">"+title_list[i]+"</a>";
+          everything+="<li class = 'inner'> <a href="+ bookLink_list[i] +">"+title_list[i]+"</a>";
           everything += "<ul>"
           everything += "<li>Author(s): " + author_list[i] ;
           everything += "<li>Quick snippet: " + snippet[i];
@@ -87,7 +87,7 @@ $(document).ready(function() {
     <h1>Google Book Search</h1>
       <div id = searchDiv>
         <form id = searchForm >
-          <p>Enter a book or key phrase: <input type="text" id="bookInput" value="Harry Potter">
+          <p>Enter a book or key phrase: <input type="text" id="bookInput" value="">
           <input id="bookButton" type="submit" value="Submit"></p>
         </form>
       </div>

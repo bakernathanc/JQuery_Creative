@@ -35,7 +35,8 @@ h1{
 li.inner{
 	padding: 3;
 	box-shadow:3px 3px 4px 1px #5e5858;
-	background-color:#969393;
+
+	background-color:#b0b1b2;
 }
 li{
 	margin: 1em 0;
